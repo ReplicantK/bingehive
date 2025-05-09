@@ -111,7 +111,8 @@ app.get("/api/image/", async (req, res) => {
     fileKey = "default";
   }
 
-  s3Download(fileKey).pipe(res);
+  const stream = await s3Download(fileKey)
+  stream.pipe(res);
 });
 
 app.get('/login', isAuthenticatedSpecial, async (req, res) => {
