@@ -1,0 +1,21 @@
+name: bingehive
+
+services:
+  blob:
+    container_name: blob-storage-bh
+    image: "minio/minio:latest"
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: ${BLOB_USER}
+      MINIO_ROOT_PASSWORD: ${BLOB_PASS}
+    volumes:
+      - ${BLOB_LOCATION}:/data
+    command: server /data --console-address ":9001"
+
+  web:
+    container_name: web-bh
+    build: .
+    ports:
+      - "3000:3000"

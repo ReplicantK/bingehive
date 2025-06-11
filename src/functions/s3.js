@@ -4,6 +4,8 @@ const { S3Client, GetObjectCommand, PutObjectCommand } = require("@aws-sdk/clien
 
 const s3Access = new S3Client({
   region: s3Configs.region,
+  endpoint: s3Configs.endpoint,
+  forcePathStyle: true,
   credentials: {
     accessKeyId: s3Configs.accessKey,
     secretAccessKey: s3Configs.secretAccessKey
