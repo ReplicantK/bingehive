@@ -3,6 +3,7 @@ name: bingehive
 services:
   blob:
     container_name: blob-storage-bh
+    restart: unless-stopped
     image: "minio/minio:latest"
     ports:
       - "9000:9000"
@@ -16,6 +17,7 @@ services:
 
   web:
     container_name: web-bh
+    restart: unless-stopped
     build: .
     ports:
       - "3000:3000"
