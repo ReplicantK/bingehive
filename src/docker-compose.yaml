@@ -28,6 +28,9 @@ services:
   web:
     container_name: web-bh
     restart: unless-stopped
+    depends_on:
+      - db
+      - blob
     build: .
     ports:
       - "3000:3000"
