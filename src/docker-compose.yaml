@@ -3,12 +3,13 @@ name: bingehive
 services:
   db:
     image: mysql:latest
+    container_name: db-bh
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: ${SQL_PASS}
       MYSQL_DATABASE: ${SQL_DB_NAME}
     ports:
-      - "3600:3600"
+      - "3306:3306"
 
   blob:
     container_name: blob-storage-bh
