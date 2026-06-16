@@ -1,6 +1,15 @@
 name: bingehive
 
 services:
+  db:
+    image: mysql:latest
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${SQL_PASS}
+      MYSQL_DATABASE: ${SQL_DB_NAME}
+    ports:
+      - "3600:3600"
+
   blob:
     container_name: blob-storage-bh
     restart: unless-stopped
